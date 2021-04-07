@@ -227,11 +227,13 @@ public class Path {
      * @return Time (in seconds) required to travel this path at the given speed (in
      *         kilometers-per-hour).
      * 
-     * @deprecated Need to be implemented.
      */
     public double getTravelTime(double speed) {
-        // TODO:
-        return 0;
+    	float somme =0;
+        for (int i =0; i<this.arcs.size(); i++) {
+        	somme += this.arcs.get(i).getTravelTime(speed);
+        }
+        return somme;
     }
 
     /**
