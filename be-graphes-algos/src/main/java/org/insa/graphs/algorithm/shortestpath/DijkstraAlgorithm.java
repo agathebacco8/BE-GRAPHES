@@ -129,7 +129,7 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
             	System.out.println("Chemin valide");
             }
             else {
-            	solution = null;
+            	solution =  new ShortestPathSolution(data, Status.INFEASIBLE);
             	System.out.println("Chemin non valide");
             }
         }
