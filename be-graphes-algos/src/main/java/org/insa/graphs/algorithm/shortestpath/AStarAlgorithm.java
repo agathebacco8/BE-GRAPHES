@@ -32,7 +32,7 @@ public class AStarAlgorithm extends DijkstraAlgorithm {
         
         // initialisation de tous les labels
         for (Node node : nodes ) {
-        		labels[node.getId()] = new LabelStar(node,false,Float.POSITIVE_INFINITY,null,data.getDestination());
+        		labels[node.getId()] = new LabelStar(node,false,Float.POSITIVE_INFINITY,null,data.getDestination(), this.getInputData());
         }
         
         labels[origine.getId()].setCost(0);

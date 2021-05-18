@@ -25,13 +25,13 @@ public class ShortestPathTest {
 		 
 		 /*---------------------Lecture de trois cartes-------------------*/
 		 
-		 final String hauteGaronne = "/home/bacconni/3A/BE-GRAPHES/maps/haute-garonne.mapgr";
+		 final String Toulouse = "/home/bacconni/3A/BE-GRAPHES/maps/toulouse.mapgr";
 		 final String belgium = "/home/bacconni/3A/BE-GRAPHES/maps/belgium.mapgr";
 		 final String insa = "/home/bacconni/3A/BE-GRAPHES/maps/insa.mapgr";
 			
 		 
 		 final GraphReader readerHG = new BinaryGraphReader(new DataInputStream
-				(new BufferedInputStream(new FileInputStream(hauteGaronne))));
+				(new BufferedInputStream(new FileInputStream(Toulouse))));
 			
   		 final GraphReader readerbelgium = new BinaryGraphReader(new DataInputStream
 				(new BufferedInputStream(new FileInputStream(belgium))));
@@ -39,7 +39,7 @@ public class ShortestPathTest {
 		 final GraphReader readerInsa = new BinaryGraphReader(new DataInputStream
 				(new BufferedInputStream(new FileInputStream(insa))));
 		 
-		 Graph graphHauteGaronne = readerHG.read();
+		 Graph graphToulouse = readerHG.read();
 		 Graph graphbelgium = readerbelgium.read();
 		 Graph graphInsa = readerInsa.read();
 		 
@@ -55,17 +55,17 @@ public class ShortestPathTest {
 		 ShortestPathData data[] = new ShortestPathData[5];
 		 
 		 // Trajet d'un point à lui-même
-		 data[0] = new ShortestPathData(graphHauteGaronne, graphHauteGaronne.get(10991), graphHauteGaronne.get(10991), allRoads);
+		 data[0] = new ShortestPathData(graphToulouse, graphToulouse.get(10991), graphToulouse.get(10991), allRoads);
 		 
 		 
 		 // Trajet bikini/Canal en voiture et en temps
-		 data[1] = new ShortestPathData(graphHauteGaronne, graphHauteGaronne.get(535), graphHauteGaronne.get(535), carsAndTime);
+		 data[1] = new ShortestPathData(graphToulouse, graphToulouse.get(535), graphToulouse.get(535), carsAndTime);
 		 
 		 // Trajet bikini/Canal en voiture et en distance
-		 data[2] = new ShortestPathData(graphHauteGaronne, graphHauteGaronne.get(535), graphHauteGaronne.get(535), carAndLength);
+		 data[2] = new ShortestPathData(graphToulouse, graphToulouse.get(535), graphToulouse.get(535), carAndLength);
 		 
 		 // Trajet bikini/Canal à pied
-		 data[3] = new ShortestPathData(graphHauteGaronne, graphHauteGaronne.get(535), graphHauteGaronne.get(535), pedestrian);
+		 data[3] = new ShortestPathData(graphToulouse, graphToulouse.get(535), graphToulouse.get(535), pedestrian);
 		 
 		 // Trajet entre deux îles non reliées (trajet non existant)
 		 data[4] = new ShortestPathData(graphbelgium, graphbelgium.get(417195), graphbelgium.get(116100), allRoads);
