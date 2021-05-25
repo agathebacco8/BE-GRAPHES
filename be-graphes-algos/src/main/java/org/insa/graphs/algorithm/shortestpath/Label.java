@@ -1,11 +1,7 @@
 package org.insa.graphs.algorithm.shortestpath;
 
-import java.util.Collections;
-import java.util.List;
 
 import org.insa.graphs.model.Arc;
-import org.insa.graphs.model.Graph;
-import org.insa.graphs.model.Node;
 import org.insa.graphs.model.Node;
 
 public class Label implements Comparable<Label>{

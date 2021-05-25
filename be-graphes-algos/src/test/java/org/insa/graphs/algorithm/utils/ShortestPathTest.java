@@ -25,23 +25,18 @@ public class ShortestPathTest {
 		 
 		 /*---------------------Lecture de trois cartes-------------------*/
 		 
-		 final String Toulouse = "/home/bacconni/3A/BE-GRAPHES/maps/toulouse.mapgr";
-		 final String belgium = "/home/bacconni/3A/BE-GRAPHES/maps/belgium.mapgr";
-		 final String insa = "/home/bacconni/3A/BE-GRAPHES/maps/insa.mapgr";
+		 final String toulouse = "/home/bacconni/3A/BE-GRAPHES/maps/toulouse.mapgr";
+		 final String frenchpolynesia = "/home/bacconni/3A/BE-GRAPHES/maps/french-polynesia.mapgr";
 			
 		 
-		 final GraphReader readerHG = new BinaryGraphReader(new DataInputStream
-				(new BufferedInputStream(new FileInputStream(Toulouse))));
+		 final GraphReader readerTLS = new BinaryGraphReader(new DataInputStream
+				(new BufferedInputStream(new FileInputStream(toulouse))));
 			
-  		 final GraphReader readerbelgium = new BinaryGraphReader(new DataInputStream
-				(new BufferedInputStream(new FileInputStream(belgium))));
-			
-		 final GraphReader readerInsa = new BinaryGraphReader(new DataInputStream
-				(new BufferedInputStream(new FileInputStream(insa))));
+  		 final GraphReader readerfrenchpolynesia = new BinaryGraphReader(new DataInputStream
+				(new BufferedInputStream(new FileInputStream(frenchpolynesia))));
 		 
-		 Graph graphToulouse = readerHG.read();
-		 Graph graphbelgium = readerbelgium.read();
-		 Graph graphInsa = readerInsa.read();
+		 Graph graphtoulouse = readerTLS.read();
+		 Graph graphfrenchpolynesia = readerfrenchpolynesia.read();
 		 
 		 
 		 
@@ -50,25 +45,24 @@ public class ShortestPathTest {
 		 final ArcInspector allRoads = ArcInspectorFactory.getAllFilters().get(0);
 		 final ArcInspector carAndLength = ArcInspectorFactory.getAllFilters().get(1);
 		 final ArcInspector carsAndTime = ArcInspectorFactory.getAllFilters().get(2);
-		 final ArcInspector pedestrian = ArcInspectorFactory.getAllFilters().get(4);
+		 final ArcInspector pedestrian = ArcInspectorFactory.getAllFilters().get(3);
 		 
 		 ShortestPathData data[] = new ShortestPathData[5];
 		 
 		 // Trajet d'un point à lui-même
-		 data[0] = new ShortestPathData(graphToulouse, graphToulouse.get(10991), graphToulouse.get(10991), allRoads);
+		 data[0] = new ShortestPathData(graphtoulouse, graphtoulouse.get(10991), graphtoulouse.get(10991), allRoads);
 		 
+		 // Trajet INSA/bikini en voiture et en temps
+		 data[1] = new ShortestPathData(graphtoulouse, graphtoulouse.get(11157), graphtoulouse.get(1068), carsAndTime);
 		 
-		 // Trajet bikini/Canal en voiture et en temps
-		 data[1] = new ShortestPathData(graphToulouse, graphToulouse.get(535), graphToulouse.get(535), carsAndTime);
+		 // Trajet INSA/bikini en voiture et en distance
+		 data[2] = new ShortestPathData(graphtoulouse, graphtoulouse.get(11157), graphtoulouse.get(1068), carAndLength);
 		 
-		 // Trajet bikini/Canal en voiture et en distance
-		 data[2] = new ShortestPathData(graphToulouse, graphToulouse.get(535), graphToulouse.get(535), carAndLength);
-		 
-		 // Trajet bikini/Canal à pied
-		 data[3] = new ShortestPathData(graphToulouse, graphToulouse.get(535), graphToulouse.get(535), pedestrian);
+		 // Trajet INSA/bikini à pied
+		 data[3] = new ShortestPathData(graphtoulouse, graphtoulouse.get(11157), graphtoulouse.get(1068), pedestrian);
 		 
 		 // Trajet entre deux îles non reliées (trajet non existant)
-		 data[4] = new ShortestPathData(graphbelgium, graphbelgium.get(417195), graphbelgium.get(116100), allRoads);
+		 data[4] = new ShortestPathData(graphfrenchpolynesia, graphfrenchpolynesia.get(14071), graphfrenchpolynesia.get(4917), allRoads);
 
 		 
 		
